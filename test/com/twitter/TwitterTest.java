@@ -47,32 +47,20 @@ public class TwitterTest {
 		assertEquals(p, twitter.vratiSvePoruke());
 
 	}
-
 	
 	/**
 	 * Test method for {@link com.twitter.Twitter#unesi(java.lang.String, java.lang.String)}.
 	 */
 	@Test
 	public void testUnesi() {
-		LinkedList<TwitterPoruka> p = new LinkedList<TwitterPoruka>();
 		
 		twitter.unesi("Jovana", "Poruka 1");
 		twitter.unesi("Milica", "Poruka 2");
 		
-		assertEquals("Milica", twitter.vratiSvePoruke().get(1).getKorisnik());
-		
-	}
-	
-	
-	/**
-	 * Test method for {@link com.twitter.Twitter#unesi(java.lang.String, java.lang.String)}.
-	 */
-	@Test
-	public void testUnesiSize() {
-		
-		twitter.unesi("Jovana", "Poruka 1");
-		twitter.unesi("Jovana", "Poruka 2");
 		assertEquals(2, twitter.vratiSvePoruke().size());
+		assertEquals(false, twitter.vratiSvePoruke().isEmpty());
+		assertEquals("KORISNIK:Jovana PORUKA:Poruka 1", twitter.vratiSvePoruke().get(0).toString());
+		assertEquals("KORISNIK:Milica PORUKA:Poruka 2", twitter.vratiSvePoruke().get(1).toString());
 		
 	}
 
@@ -108,7 +96,11 @@ public class TwitterTest {
 		twitter.unesi("Milica", "Poruka broj 2");
 		twitter.unesi("Tamara", "Poruka 3");
 		
+		assertEquals(2, twitter.vratiPoruke(2, "Poruka").length);
+		assertEquals("Poruka 3", twitter.vratiPoruke(3,"Poruka")[2].getPoruka());
+	
 		assertEquals("Poruka broj 2", twitter.vratiPoruke(3, "broj")[0].getPoruka());
+		assertEquals("Milica", twitter.vratiPoruke(3, "broj")[0].getKorisnik());
 		
 	
 	}

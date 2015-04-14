@@ -33,8 +33,7 @@ public class TwitterPorukaTest {
 		twitterPoruka = null;
 	}
 
-
-
+	
 	/**
 	 * Test method for {@link com.twitter.poruke.TwitterPoruka#setKorisnik(java.lang.String)}.
 	 */
